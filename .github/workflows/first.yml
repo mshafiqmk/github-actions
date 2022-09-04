@@ -12,6 +12,6 @@ jobs:
   job2:
     name: Second Job
     runs-on: windows-latest
-    steps
-      -name: Step One
-      -name: Step two
+    steps:
+      - name: Step One
+      - name: Step two
