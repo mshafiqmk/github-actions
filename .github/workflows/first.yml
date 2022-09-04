@@ -3,8 +3,8 @@ name: first
 on: push
 
 jobs:
-  job1:
-    name: First Job
+  ubuntu:
+    name: ubuntu Job
     runs-on: ubuntu-latest
     steps:
       - name: Step One
@@ -12,8 +12,8 @@ jobs:
       - name: Step two
         run: env | sort
 
-  job2:
-    name: Second Job
+  windows:
+    name: windows Job
     runs-on: windows-latest
     steps:
       - name: Step One
@@ -21,8 +21,8 @@ jobs:
       - name: Step two
         run: "Get-ChildItem Env: | Sort-Object Name"
 
-    job3:
-    name: Second Job
+  macos:
+    name: Third Job
     runs-on: macos-latest
     steps:
       - name: Step One
@@ -30,9 +30,9 @@ jobs:
       - name: Step two
         run: env | sort
 
-  job4:
-    needs: job1, job2,job3
-    name: Second Job
+  depends:
+    needs: [ubuntu,macos,windows]
+    name: Fourth Job
     runs-on: windows-latest
     steps:
       - name: Step One
