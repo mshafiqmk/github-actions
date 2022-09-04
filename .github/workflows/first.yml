@@ -11,7 +11,27 @@ jobs:
         uses: actions/checkout@v2
       - name: Step two
         run: env | sort
+
   job2:
+    name: Second Job
+    runs-on: windows-latest
+    steps:
+      - name: Step One
+        uses: actions/checkout@v2
+      - name: Step two
+        run: "Get-ChildItem Env: | Sort-Object Name"
+
+    job3:
+    name: Second Job
+    runs-on: macos-latest
+    steps:
+      - name: Step One
+        uses: actions/checkout@v2
+      - name: Step two
+        run: env | sort
+
+  job4:
+    needs: job1, job2,job3
     name: Second Job
     runs-on: windows-latest
     steps:
